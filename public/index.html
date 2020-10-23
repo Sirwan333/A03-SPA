@@ -9,19 +9,28 @@
     <title>Snowpack App</title>
   </head>
   <body>
-    <img id="img" src="/logo.svg" />
-    <canvas id="canvas"></canvas>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="drop">
+      <div id="newWindows" draggable="true">
+        <div id="upperBar">
+          <img src="" alt="">
+          <p></p>
+          <button></button>
+        </div>
+        <div id="windowsBody"></div>
+        <div id="windowsBottom"></div>
+      </div>
+    </div>
+    <div id="iconsBar">
+      <button id="memoryIcon" ondblclick="alert()" type="button">
+        <img id="memoryImage" src="memory_icon.png" alt="memory icon">
+      </button>
+      <button id="chatIcon" ondblclick="alert()" type="button">
+        <img id="chatImage" src="chat-icon.jpg" alt="chat icon">
+      </button>
+      <button id="hangmanIcon" ondblclick="alert()" type="button">
+        <img id="hangmanImage" src="hangman_icon.png" alt="hangman icon">
+      </button>
+    </div>
     <script type="module" src="/_dist_/index.js"></script>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>
