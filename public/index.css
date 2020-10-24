@@ -116,7 +116,7 @@ body {
   padding: 0;
 }
 
-#image1{
+#windowsBody img {
   width: 25%;
   object-fit: contain;
   height: 25%;
