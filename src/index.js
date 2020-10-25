@@ -19,10 +19,10 @@ confetti.create(document.getElementById('canvas'), {
  *
  * @returns {undefined} Nothing.
  */
-function main () {
+function main (id) {
   'use strict'
 
-  let itemArea = document.getElementById("newWindows")
+  let itemArea = document.getElementById(`newWindows${id}`)
   let droppableArea = document.getElementById("drop")
 
   function dragStartHandler(event) {
@@ -58,31 +58,23 @@ function main () {
 
 
 
-
+let counttt = 0;
 
 document.getElementById("memoryIcon").addEventListener("click",  () => {
 
 
-  let div = document.createElement("div")
-  div.id = "conatinerr"
-  div.innerHTML = `<div id="newWindows" draggable="true">
-  <div id="upperBar">
-    <button type="button" id="close">X</button>
-  </div>
-  <div id="windowsBody">
-  </div>
-  <div id="windowsBottom"></div>
-</div>`
-  document.getElementById("drop").appendChild(div)
+
   // newMemory.newWindo();
-  main ()
-  let memory = new Memory();
+  
+  let memory = new Memory(counttt++);
+  memory.createC();
   memory.shuffle();
   memory.startA();
-  let img2 = document.querySelectorAll('#windowsBody img').forEach(item => {
+  main (memory.id)
+  let img2 = document.querySelectorAll('.windowsBody img').forEach(item => {
     item.addEventListener('click', event => {
         event.target.className = "second";
-        event.target.src =  event.target.id
+        event.target.src =  event.target.id.substring(0, 9)
         memory.match.push(event.target.id)
         console.log(memory.match)
         if(memory.match.length == 2){
@@ -91,7 +83,7 @@ document.getElementById("memoryIcon").addEventListener("click",  () => {
     
     })
 })
-  document.getElementById("close").addEventListener("click",  () => {
-    document.getElementById("conatinerr").remove();
+  document.getElementById(`close${memory.id}`).addEventListener("click",  () => {
+    document.getElementById(`container${memory.id}`).remove();
   })
 })

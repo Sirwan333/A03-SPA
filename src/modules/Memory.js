@@ -7,6 +7,7 @@ export default class Memory{
         this.match = [];
         this.counter=0;
         this.count=0; 
+        
     }
 
     shuffle() {  
@@ -14,13 +15,16 @@ export default class Memory{
     }
 
     startA(){
-        this.imgArray.forEach(function printM(img){
+        // this.imgArray.forEach(function printM(img){
+            
+        // });
+        for(let i = 0; i<this.imgArray.length; i++){
             let imga = document.createElement("img")
             imga.src = "img/0.png";
-            imga.id = img
+            imga.id = this.imgArray[i]+this.id
             imga.className = "first"
-            document.getElementById("windowsBody").appendChild(imga)
-        });
+            document.getElementById(`windowsBody${this.id}`).appendChild(imga)
+        }
     }
 
     sleep(ms) {
@@ -44,6 +48,20 @@ export default class Memory{
             this.counter++
          });
         }  
+    }
+
+    createC(){
+        let div = document.createElement("div")
+        div.id = `container${this.id}`
+        div.innerHTML = `<div id="newWindows${this.id}" class="newWindows" draggable="true">
+        <div id="upperBar">
+          <button type="button" id="close${this.id}" class="close">X</button>
+        </div>
+        <div id="windowsBody${this.id}" class="windowsBody">
+        </div>
+        <div id="windowsBottom"></div>
+      </div>`
+        document.getElementById("drop").appendChild(div)
     }
 }
 
