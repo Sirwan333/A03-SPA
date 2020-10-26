@@ -6,20 +6,41 @@
   padding: 2rem;
 }
 
-#canvas {
-  display: block;
-  margin: 2rem auto;
-  width: 540px;
-  height: 540px;
+.menu {
+  position: fixed;
+  width: 100%;
+  bottom: 16px;
+  height: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-#iconsBar{
-  border: 3px solid black;
-  position: absolute;
-  width: 99%;
-  bottom: 10px;
-  height: 10%;
+.menu div {
+  flex: 1;
+  text-align: center;
 }
+
+.menu div > button {
+  border: none;
+  padding: 0;
+  height: 60px;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+}
+
+.image {
+  height: 60px;
+}
+
+.container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 
 body {
   background: url(img/b.png);
@@ -29,17 +50,8 @@ body {
 
 .newWindows{
   border: 2.5px solid black;
-  width: 20%;
-  height: 300px;
-  top: 0;
-  left: 0;
-  position: relative;
-  /* display: none; */
-  float: left;
-  
-  
-
-  
+  width: 260px;
+  height: 300px;  
 }
 
 #upperBar{
@@ -63,57 +75,19 @@ body {
   background-color: #d5d5cb;
 }
 
-#drop{
+.drop{
   width: 100%;
   height: 600px;
-  
+  position: relative;
 
 }
 
-#memoryIcon{
-  width: 5%;
-  border: black 2px solid;
-  height: 100%;
-  padding: 0;
-  margin-left: 300px;
-  float: left;
-  
-
-}
-
-#memoryImage{
-  width: 100%;
-  object-fit: contain;
-  height: 100%;
-  padding: 0;
-}
-
-#chatIcon{
-  width: 5%;
-  border: black 2px solid;
-  height: 100%;
-  padding: 0;
-  margin-left: 300px;
-  float: left;
-  
-
-}
 
 #chatImage{
   width: 100%;
   object-fit: contain;
   height: 100%;
   padding: 0;
-}
-
-#hangmanIcon{
-  width: 5%;
-  border: black 2px solid;
-  height: 100%;
-  padding: 0;
-  margin-left: 300px;
-  
-
 }
 
 #hangmanImage{

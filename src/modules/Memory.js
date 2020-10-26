@@ -53,7 +53,11 @@ export default class Memory{
     createC(){
         let div = document.createElement("div")
         div.id = `container${this.id}`
-        div.innerHTML = `<div id="newWindows${this.id}" class="newWindows" draggable="true">
+        div.style.top = 0;
+        div.style.left = 0;
+        div.draggable = "true"
+        div.style.position ="absolute"
+        div.innerHTML = `<div id="newWindows${this.id}" class="newWindows">
         <div id="upperBar">
           <button type="button" id="close${this.id}" class="close">X</button>
         </div>
@@ -61,7 +65,7 @@ export default class Memory{
         </div>
         <div id="windowsBottom"></div>
       </div>`
-        document.getElementById("drop").appendChild(div)
+        document.body.appendChild(div)
     }
 }
 

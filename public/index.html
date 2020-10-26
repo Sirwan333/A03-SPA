@@ -9,26 +9,25 @@
     <title>Snowpack App</title>
   </head>
   <body>
-    <div id="drop">
-      <!-- <div id="newWindows" draggable="true">
-        <div id="upperBar">
-          <button type="button" id="close">X</button>
-        </div>
-        <div id="windowsBody">
-        </div>
-        <div id="windowsBottom"></div>
-      </div> -->
+    <div class="container">
+
     </div>
-    <div id="iconsBar">
-      <button id="memoryIcon"  type="button">
-        <img id="memoryImage" src="img/memory_icon.png" alt="memory icon">
-      </button>
-      <button id="chatIcon" ondblclick="alert()" type="button">
-        <img id="chatImage" src="img/chat-icon.jpg" alt="chat icon">
-      </button>
-      <button id="hangmanIcon" ondblclick="alert()" type="button">
-        <img id="hangmanImage" src="img/hangman_icon.png" alt="hangman icon">
-      </button>
+    <div class="menu">
+      <div>
+        <button id="memoryIcon"  type="button" class="menu-item">
+          <img class="image" src="img/memory_icon.png" alt="memory icon">
+        </button>
+      </div>
+      <div>
+        <button id="chatIcon" ondblclick="alert()" type="button">
+          <img class="image" src="img/chat-icon.jpg" alt="chat icon">
+        </button>
+      </div>
+      <div>
+        <button id="hangmanIcon" ondblclick="alert()" type="button">
+          <img class="image" src="img/hangman_icon.png" alt="hangman icon">
+        </button>
+      </div>
     </div>
     <script type="module" src="/_dist_/index.js"></script>
   </body>

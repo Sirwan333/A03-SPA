@@ -3,16 +3,8 @@
  * When you're ready to start on your site, clear the file. Happy hacking!
  **/
 
-import confetti from 'canvas-confetti';
-// import newMemory from './modules/MemoryWindow.js'
+
 import Memory from './modules/Memory.js';
-confetti.create(document.getElementById('canvas'), {
-  resize: true,
-  useWorker: true,
-})({ particleCount: 200, spread: 200 });
-
-
-
 
 /**
  * The main function.
@@ -21,51 +13,54 @@ confetti.create(document.getElementById('canvas'), {
  */
 function main (id) {
   'use strict'
-
-  let itemArea = document.getElementById(`newWindows${id}`)
-  let droppableArea = document.getElementById("drop")
+  
+  // let itemArea = document.getElementById(`newWindows${id}`)
+  let nn = document.getElementById(`container${id}`)
+  
+  console.log('memory > ' + id)
 
   function dragStartHandler(event) {
     let style = window.getComputedStyle(event.target, null)
-
+    console.log("draged"+ event.target.id)
     // Remember the original position
-    event.dataTransfer.setData("text/plain",
-        (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY)
-    )
+    //event.dataTransfer.setData("text/plain",
+    //    (parseInt(style.getPropertyValue("left"), 10) - event.clientX) + ',' + (parseInt(style.getPropertyValue("top"), 10) - event.clientY)
+    //)
+    event.dataTransfer.setData("Text", event.target.id);
     event.dataTransfer.dropEffect = "move"
   }
 
-  function dropHandler(event) {
-    let offset = event.dataTransfer.getData("text/plain").split(',')
-    itemArea.style.left = (event.clientX + parseInt(offset[0],10)) + 'px';
-    itemArea.style.top = (event.clientY + parseInt(offset[1],10)) + 'px';
-    event.preventDefault()
-  }
 
-  itemArea.addEventListener("dragstart", dragStartHandler)
-
-  droppableArea.addEventListener("dragenter", (event) => {
-      event.preventDefault()
+  nn.addEventListener("dragstart", dragStartHandler)
+  document.getElementById(`close${id}`).addEventListener("click",  () => {
+    document.removeEventListener('dragstart', dragStartHandler);
+    document.getElementById(`container${id}`).remove();
   })
-  droppableArea.addEventListener("dragover", (event) => {
-      event.preventDefault()
-  })
-  droppableArea.addEventListener("drop", dropHandler)
-
-
 }
 
+function dropHandler(event) {
+  event.preventDefault()
+  const elem = document.getElementById(event.dataTransfer.getData("Text"))
+  console.log(elem)
+  elem.style.left = (event.clientX ) + 'px';
+  elem.style.top = (event.clientY) + 'px';
+  
+  
+}
 
-
+let droppableArea = document.body
+droppableArea.addEventListener("dragenter", (event) => {
+  event.preventDefault()
+})
+droppableArea.addEventListener("dragover", (event) => {
+  console.log(event)
+  event.preventDefault()
+})
+droppableArea.addEventListener("drop", dropHandler)
 
 let counttt = 0;
 
 document.getElementById("memoryIcon").addEventListener("click",  () => {
-
-
-
-  // newMemory.newWindo();
-  
   let memory = new Memory(counttt++);
   memory.createC();
   memory.shuffle();
@@ -80,10 +75,8 @@ document.getElementById("memoryIcon").addEventListener("click",  () => {
         if(memory.match.length == 2){
             memory.checkMatch()
         }
-    
     })
-})
-  document.getElementById(`close${memory.id}`).addEventListener("click",  () => {
-    document.getElementById(`container${memory.id}`).remove();
   })
 })
+
+
