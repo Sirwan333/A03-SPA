@@ -55,6 +55,7 @@ export default class Memory{
         div.id = `container${this.id}`
         div.style.top = 0;
         div.style.left = 0;
+        div.className = "divCon"
         div.draggable = "true"
         div.style.position ="absolute"
         div.innerHTML = `<div id="newWindows${this.id}" class="newWindows">

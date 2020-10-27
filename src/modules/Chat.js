@@ -23,6 +23,7 @@ export default class Chat{
         div.id = `container${this.id}`
         div.style.top = 0;
         div.style.left = 0;
+        div.className = "divCon"
         div.draggable = "true"
         div.style.position ="absolute"
         div.innerHTML = `<div id="newWindows${this.id}" class="newWindows">
@@ -30,11 +31,15 @@ export default class Chat{
           <button type="button" id="close${this.id}" class="close">X</button>
         </div>
         <div id="windowsBody${this.id}" class="windowsBody">
+            <div id ="messageWindow${this.id}" class ="messageWindow">
+        
+            </div>
+            
             <div>
-                <input type="text" name="" id="inputArea${this.id}">
+                <input type="text" name="" id="inputArea${this.id}" class="inputArea">
             </div>
             <div>
-                <button id="but${this.id}">X</button>
+                <button id="buttonSend${this.id}" class="buttonSend">Send</button>
             </div>
         </div>
         <div id="windowsBottom"></div>

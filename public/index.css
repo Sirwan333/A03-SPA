@@ -107,3 +107,23 @@ body {
 .close{
   float: right;
 }
+
+.messageWindow{
+  
+  height: 175px;
+  background-color: white;
+  overflow: scroll;
+  padding-left: 5px;
+}
+
+.inputArea{
+  width:252px;
+  height: 30px;
+}
+
+.buttonSend{
+  width: 100px;
+  margin: 20px;
+  margin-top: 1px;
+  margin-left: 75px; 
+}

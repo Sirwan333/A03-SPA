@@ -48,6 +48,7 @@ function main (id) {
 function dropHandler(event) {
   event.preventDefault()
   const elem = document.getElementById(event.dataTransfer.getData("Text"))
+  console.log(elem)
   elem.style.left = (event.clientX ) + 'px';
   elem.style.top = (event.clientY) + 'px'; 
 }
@@ -87,23 +88,40 @@ document.getElementById("memoryIcon").addEventListener("click",  () => {
 
 
 
-
-
+// let counterq = 0;
+// document.querySelectorAll("div").forEach(item=>function(){
+//   item.addEventListener('click', event=>{
+//     console.log("ffff")
+//     event.target.style.zIndex = `${counterq++}`;
+//   })
+// })
 
 
 let counttt1 = 0;
 document.getElementById("chatIcon").addEventListener("click",  () => {
-  let chat = new Chat(counttt1++)
+
+
+  let chat = new Chat(counttt++)
   let socket =chat.connect()
   chat.createC();
   main (chat.id)
+  let messageWindow = document.getElementById(`messageWindow${chat.id}`)
   let data = document.getElementById(`inputArea${chat.id}`)
-  let butt = document.getElementById(`but${chat.id}`)
+  let sendButton = document.getElementById(`buttonSend${chat.id}`)
   socket.addEventListener('message', function (event) {
     console.log('Message from server ', event.data);
+    
+    let rec = JSON.parse(event.data)
+    if(rec.type == "heartbeat"){
+
+    }
+    else{
+      messageWindow.innerHTML += ` ${rec.data} <br>`
+    }
+    
   });  
   socket.addEventListener('open', function (event) {
-    butt.addEventListener('click', (event) =>{
+    sendButton.addEventListener('click', (event) =>{
       console.log(event.target)
       let message1 = {
         "type": "message",
@@ -112,6 +130,7 @@ document.getElementById("chatIcon").addEventListener("click",  () => {
         "key": "eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd"
       }
       message1.data = data.value 
+      data.value = "";
       chat.sendMessage(JSON.stringify(message1));
     })
   });  
