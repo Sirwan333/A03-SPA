@@ -5,6 +5,17 @@
 
 
 import Memory from './modules/Memory.js';
+import Chat from './modules/Chat.js';
+
+
+
+
+
+
+
+
+
+
 
 /**
  * The main function.
@@ -12,13 +23,11 @@ import Memory from './modules/Memory.js';
  * @returns {undefined} Nothing.
  */
 function main (id) {
-  'use strict'
-  
+  'use strict'  
   // let itemArea = document.getElementById(`newWindows${id}`)
   let nn = document.getElementById(`container${id}`)
-  
   console.log('memory > ' + id)
-
+  
   function dragStartHandler(event) {
     let style = window.getComputedStyle(event.target, null)
     console.log("draged"+ event.target.id)
@@ -29,8 +38,6 @@ function main (id) {
     event.dataTransfer.setData("Text", event.target.id);
     event.dataTransfer.dropEffect = "move"
   }
-
-
   nn.addEventListener("dragstart", dragStartHandler)
   document.getElementById(`close${id}`).addEventListener("click",  () => {
     document.removeEventListener('dragstart', dragStartHandler);
@@ -41,25 +48,24 @@ function main (id) {
 function dropHandler(event) {
   event.preventDefault()
   const elem = document.getElementById(event.dataTransfer.getData("Text"))
-  console.log(elem)
   elem.style.left = (event.clientX ) + 'px';
-  elem.style.top = (event.clientY) + 'px';
-  
-  
+  elem.style.top = (event.clientY) + 'px'; 
 }
+
+
+
+
+
 
 let droppableArea = document.body
 droppableArea.addEventListener("dragenter", (event) => {
   event.preventDefault()
 })
 droppableArea.addEventListener("dragover", (event) => {
-  console.log(event)
   event.preventDefault()
 })
 droppableArea.addEventListener("drop", dropHandler)
-
 let counttt = 0;
-
 document.getElementById("memoryIcon").addEventListener("click",  () => {
   let memory = new Memory(counttt++);
   memory.createC();
@@ -80,3 +86,33 @@ document.getElementById("memoryIcon").addEventListener("click",  () => {
 })
 
 
+
+
+
+
+
+let counttt1 = 0;
+document.getElementById("chatIcon").addEventListener("click",  () => {
+  let chat = new Chat(counttt1++)
+  let socket =chat.connect()
+  chat.createC();
+  main (chat.id)
+  let data = document.getElementById(`inputArea${chat.id}`)
+  let butt = document.getElementById(`but${chat.id}`)
+  socket.addEventListener('message', function (event) {
+    console.log('Message from server ', event.data);
+  });  
+  socket.addEventListener('open', function (event) {
+    butt.addEventListener('click', (event) =>{
+      console.log(event.target)
+      let message1 = {
+        "type": "message",
+        "data": "",
+        "username": "Name1",
+        "key": "eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd"
+      }
+      message1.data = data.value 
+      chat.sendMessage(JSON.stringify(message1));
+    })
+  });  
+})
