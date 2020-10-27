@@ -6,6 +6,7 @@
 
 import Memory from './modules/Memory.js';
 import Chat from './modules/Chat.js';
+import BMI from './modules/BMI.js';
 
 
 
@@ -22,8 +23,10 @@ import Chat from './modules/Chat.js';
  *
  * @returns {undefined} Nothing.
  */
+let countere = 0;
 function main (id) {
   'use strict'  
+  
   // let itemArea = document.getElementById(`newWindows${id}`)
   let nn = document.getElementById(`container${id}`)
   console.log('memory > ' + id)
@@ -37,6 +40,12 @@ function main (id) {
     //)
     event.dataTransfer.setData("Text", event.target.id);
     event.dataTransfer.dropEffect = "move"
+    
+
+    console.log("ffff")
+    event.target.style.zIndex = `${countere++}`;
+  
+
   }
   nn.addEventListener("dragstart", dragStartHandler)
   document.getElementById(`close${id}`).addEventListener("click",  () => {
@@ -88,13 +97,7 @@ document.getElementById("memoryIcon").addEventListener("click",  () => {
 
 
 
-// let counterq = 0;
-// document.querySelectorAll("div").forEach(item=>function(){
-//   item.addEventListener('click', event=>{
-//     console.log("ffff")
-//     event.target.style.zIndex = `${counterq++}`;
-//   })
-// })
+
 
 
 let counttt1 = 0;
@@ -135,3 +138,29 @@ document.getElementById("chatIcon").addEventListener("click",  () => {
     })
   });  
 })
+
+
+
+document.getElementById("hangmanIcon").addEventListener("click",  () => {
+
+
+  let bmi = new BMI(counttt++)
+  bmi.createC();
+  main (bmi.id)
+  let wightt;
+  
+  let wightValue = document.getElementById(`wightValue${bmi.id}`)
+  
+
+  let hightt;
+  let hight = document.getElementById(`hightButton${bmi.id}`)
+  let hightValue = document.getElementById(`hightValue${bmi.id}`)
+  hight.addEventListener("click", ()=>{
+    wightt=wightValue.value
+    hightt=hightValue.value
+     bmi.getBmi(wightt, hightt)
+  })
+
+  
+})
+
