@@ -28,7 +28,8 @@ export default class Chat{
         div.style.position ="absolute"
         div.innerHTML = `<div id="newWindows${this.id}" class="newWindows">
         <div id="upperBar">
-          <button type="button" id="close${this.id}" class="close">X</button>
+            <img id="smallIcon${this.id}" src="" class="smallIcon" alt="smallIcon">
+            <button type="button" id="close${this.id}" class="close">X</button>
         </div>
         <div id="windowsBody${this.id}" class="windowsBody">
             <div id ="username${this.id}" class ="username">
@@ -46,7 +47,7 @@ export default class Chat{
                 <button id="buttonSend${this.id}" class="buttonSend">Send</button>
             </div>
         </div>
-        <div id="windowsBottom"></div>
+        <div id="windowsBottom" class="windowsBottom"></div>
       </div>`
         document.body.appendChild(div)
     }

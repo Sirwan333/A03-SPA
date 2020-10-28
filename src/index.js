@@ -77,12 +77,68 @@ droppableArea.addEventListener("dragover", (event) => {
 droppableArea.addEventListener("drop", dropHandler)
 let counttt = 0;
 document.getElementById("memoryIcon").addEventListener("click",  () => {
+  // let img3 = document.querySelectorAll('.windowsBody img').forEach(item => {
+  //   item.addEventListener("keydown", event=>{
+  //     console.log(event.key)
+  //   })
+  // })
+
+  
   let memory = new Memory(counttt++);
   memory.createC();
   memory.shuffle();
   memory.startA();
+  document.ge
+  document.getElementById(`smallIcon${memory.id}`).src="img/memory_icon.png"
   main (memory.id)
+  let i =0;
+  document.body.addEventListener("keydown", (event)=>{
+    console.log(i)
+    console.log(event.key)
+    if(event.key=="ArrowRight"){
+      
+      if(i==0){
+        document.getElementById(`${memory.imgArray[i]+memory.id+i}`).style.border = "2px solid black"
+        i++;
+       
+      }else if(i>0&i<16){
+        document.getElementById(`${memory.imgArray[i]+memory.id+i}`).style.border = "2px solid black"
+        document.getElementById(`${memory.imgArray[i-1]+memory.id+(i-1)}`).style.border = ""
+        i++;
+      }
+      else{
+       
+      }
+      
+    }else if(event.key=="ArrowLeft"){
+      if(i==0){
+
+      }else if(i==1){
+
+      }
+      else if(i>1&i<17){
+        i--;
+        document.getElementById(`${memory.imgArray[i]+memory.id+i}`).style.border = ""
+        document.getElementById(`${memory.imgArray[i-1]+memory.id+(i-1)}`).style.border = "2px solid black"
+        
+      }else{
+        
+      }
+      
+    }else if(event.key=="Enter"){
+        let ddd = document.getElementById(`${memory.imgArray[i-1]+memory.id+(i-1)}`)
+        ddd.className = "second";
+        ddd.src =  ddd.id.substring(0, 9)
+        memory.match.push(ddd.id)
+        console.log(memory.match)
+        if(memory.match.length == 2){
+            memory.checkMatch()
+        }
+
+    }
+  })
   let img2 = document.querySelectorAll('.windowsBody img').forEach(item => {
+    
     item.addEventListener('click', event => {
         event.target.className = "second";
         event.target.src =  event.target.id.substring(0, 9)
@@ -110,6 +166,7 @@ document.getElementById("chatIcon").addEventListener("click",  () => {
   let chat = new Chat(counttt++)
   let socket =chat.connect()
   chat.createC();
+  document.getElementById(`smallIcon${chat.id}`).src="img/chat-icon.jpg"
   let username = document.getElementById(`usernameInput${chat.id}`)
   let usernameInterface = document.getElementById(`username${chat.id}`)
   let messageWindow1 = document.getElementById(`messageWindow${chat.id}`)
@@ -137,6 +194,7 @@ document.getElementById("chatIcon").addEventListener("click",  () => {
   
   
   main (chat.id)
+  
   let messageWindow = document.getElementById(`messageWindow${chat.id}`)
   let data = document.getElementById(`inputArea${chat.id}`)
   let sendButton = document.getElementById(`buttonSend${chat.id}`)
@@ -148,7 +206,17 @@ document.getElementById("chatIcon").addEventListener("click",  () => {
 
     }
     else{
-      messageWindow.innerHTML += `<div style="background-color:#E8E8E8;"><b> ${recData.username}:</b> </div> ${recData.data} <br>`
+      let today = new Date();
+      if(today.getMinutes() < 10){
+        let time = today.getHours() + ':0' + today.getMinutes() + ":" + today.getSeconds();
+        messageWindow.innerHTML += `<div style="background-color:#E8E8E8;"><b> ${recData.username}:</b> (${time}) </div> ${recData.data} <br>`
+      }
+      else{
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        messageWindow.innerHTML += `<div style="background-color:#E8E8E8;"><b> ${recData.username}:</b> (${time}) </div> ${recData.data} <br>`
+      }
+      
+      
     }
     
   });  
@@ -172,7 +240,7 @@ document.getElementById("hangmanIcon").addEventListener("click",  () => {
   bmi.createC();
   main (bmi.id)
   let wightt;
-  
+  document.getElementById(`smallIcon${bmi.id}`).src="img/hangman_icon.png"
   let wightValue = document.getElementById(`wightValue${bmi.id}`)
   
 

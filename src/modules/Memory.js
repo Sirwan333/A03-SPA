@@ -16,12 +16,12 @@ export default class Memory{
 
     startA(){
         // this.imgArray.forEach(function printM(img){
-            
+            let c =0
         // });
         for(let i = 0; i<this.imgArray.length; i++){
             let imga = document.createElement("img")
             imga.src = "img/0.png";
-            imga.id = this.imgArray[i]+this.id
+            imga.id = this.imgArray[i]+this.id+c++
             imga.className = "first"
             document.getElementById(`windowsBody${this.id}`).appendChild(imga)
         }
@@ -32,18 +32,24 @@ export default class Memory{
       }
       
     checkMatch(){
-        if(this.match[0]===this.match[1]){
-            this.sleep(1000).then(() => {  document.querySelectorAll(`#${CSS.escape(this.match[0])}`).forEach(item => {item.style.visibility= "hidden"})
+        if(this.match[0].substring(0, 8)===this.match[1].substring(0, 8)){
+            this.sleep(1000).then(() => {  
+            document.getElementById(`${this.match[0]}`).style.visibility = "hidden"
+            document.getElementById(`${this.match[1]}`).style.visibility = "hidden"
             this.match = [];
             this.counter++
             this.count++
             if(this.count==8){
-                console.log(this.counter)
+                document.getElementById(`windowsBottom${this.id}`).innerText = `${this.counter}`
             } });
         }
         else{
             this.sleep(1000).then(() => { console.log("DONe")
-            document.querySelectorAll(".second").forEach(item => {item.src = "img/0.png"})
+            document.getElementById(`${this.match[0]}`).src = "img/0.png"
+            document.getElementById(`${this.match[1]}`).src = "img/0.png"
+            this.match = [];
+            this.counter++
+            // document.querySelectorAll(".second").forEach(item => {item.src = "img/0.png"})
             this.match = [];
             this.counter++
          });
@@ -60,11 +66,12 @@ export default class Memory{
         div.style.position ="absolute"
         div.innerHTML = `<div id="newWindows${this.id}" class="newWindows">
         <div id="upperBar">
-          <button type="button" id="close${this.id}" class="close">X</button>
+            <img id="smallIcon${this.id}" src="" class="smallIcon" alt="smallIcon">
+            <button type="button" id="close${this.id}" class="close">X</button>
         </div>
         <div id="windowsBody${this.id}" class="windowsBody">
         </div>
-        <div id="windowsBottom"></div>
+        <div id="windowsBottom${this.id}" class="windowsBottom"></div>
       </div>`
         document.body.appendChild(div)
     }

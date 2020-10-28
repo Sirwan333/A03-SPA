@@ -30,6 +30,7 @@ export default class Memory{
         div.innerHTML = 
         `<div id="newWindows${this.id}" class="newWindows">
             <div id="upperBar">
+            <img id="smallIcon${this.id}" src="" class="smallIcon" alt="smallIcon">
             <button type="button" id="close${this.id}" class="close">X</button>
             </div>
             <div id="windowsBody${this.id}" class="windowsBody">
@@ -47,7 +48,7 @@ export default class Memory{
                     </div>
                 </div>
             </div>
-            <div id="windowsBottom"></div>
+            <div id="windowsBottom" class="windowsBottom"></div>
         </div>`
         document.body.appendChild(div)
     }
