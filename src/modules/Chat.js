@@ -18,6 +18,7 @@ export default class Chat{
     close(){
         this.websocket.close();
     }
+
     createC(){
         let div = document.createElement("div")
         div.id = `container${this.id}`
@@ -35,11 +36,9 @@ export default class Chat{
             <div id ="username${this.id}" class ="username">
                 <input type="text" name="" id="usernameInput${this.id}" class="usernameInput">
                 <button id="usernameButton${this.id}" class="usernameButton">Start To Chat</button>
-            </div>
-            
+            </div>  
             <div id ="messageWindow${this.id}" class ="messageWindow">
             </div>
-            
             <div>
                 <input type="text" name="" id="inputArea${this.id}" class="inputArea">
             </div>

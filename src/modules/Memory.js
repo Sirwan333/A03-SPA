@@ -6,18 +6,15 @@ export default class Memory{
         "img/2.png", "img/3.png", "img/4.png", "img/5.png", "img/6.png", "img/7.png", "img/8.png"];
         this.match = [];
         this.counter=0;
-        this.count=0; 
-        
+        this.count=0;   
     }
 
     shuffle() {  
         this.imgArray.sort(() => Math.random() - 0.5);
     }
 
-    startA(){
-        // this.imgArray.forEach(function printM(img){
-            let c =0
-        // });
+    startA(){    
+        let c =0
         for(let i = 0; i<this.imgArray.length; i++){
             let imga = document.createElement("img")
             imga.src = "img/0.png";
@@ -49,7 +46,6 @@ export default class Memory{
             document.getElementById(`${this.match[1]}`).src = "img/0.png"
             this.match = [];
             this.counter++
-            // document.querySelectorAll(".second").forEach(item => {item.src = "img/0.png"})
             this.match = [];
             this.counter++
          });

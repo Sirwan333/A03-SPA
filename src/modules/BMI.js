@@ -14,10 +14,8 @@ export default class Memory{
             document.getElementById(`inputBmi${this.id}`).innerText = `${bmiValue} Overweight`;
         } else {
             document.getElementById(`inputBmi${this.id}`).innerText = `${bmiValue} Obese`;
-        }
-        
+        }       
     }
-  
 
     createC(){
         let div = document.createElement("div")
@@ -36,15 +34,13 @@ export default class Memory{
             <div id="windowsBody${this.id}" class="windowsBody">
                 <div>
                     <div id="" class="">
-                        <input type="text" id="wightValue${this.id}" class="">
-                        
+                        <input type="text" id="wightValue${this.id}" class="">                  
                     </div>
                     <div id="" class="">
                         <input type="text" id="hightValue${this.id}" class="">
                         <button id="hightButton${this.id}" class="">Calculate</button>
                     </div>
                     <div id="inputBmi${this.id}" class="">
-
                     </div>
                 </div>
             </div>
