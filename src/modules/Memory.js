@@ -37,7 +37,7 @@ export default class Memory{
             this.counter++
             this.count++
             if(this.count==8){
-                document.getElementById(`windowsBottom${this.id}`).innerText = `${this.counter}`
+                document.getElementById(`windowsBody${this.id}`).innerText= `Congratulation You Won After ${this.counter} tries`
             } });
         }
         else{

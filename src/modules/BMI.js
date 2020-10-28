@@ -7,13 +7,13 @@ export default class Memory{
     getBmi(w, h){
         let bmiValue =  w/(Math.pow(h,2))
         if (bmiValue < 18.5) {
-            document.getElementById(`inputBmi${this.id}`).innerText = `${bmiValue} Underweight`;
+            document.getElementById(`inputBmi${this.id}`).innerText = `Result: ${bmiValue} Underweight`;
         } else if (bmiValue < 25) {
-            document.getElementById(`inputBmi${this.id}`).innerText = `${bmiValue} Normal`; 
+            document.getElementById(`inputBmi${this.id}`).innerText = `Result: ${bmiValue} Normal`; 
         } else if (bmiValue < 30) {
-            document.getElementById(`inputBmi${this.id}`).innerText = `${bmiValue} Overweight`;
+            document.getElementById(`inputBmi${this.id}`).innerText = `Result: ${bmiValue} Overweight`;
         } else {
-            document.getElementById(`inputBmi${this.id}`).innerText = `${bmiValue} Obese`;
+            document.getElementById(`inputBmi${this.id}`).innerText = `Result: ${bmiValue} Obese`;
         }       
     }
 
@@ -33,12 +33,14 @@ export default class Memory{
             </div>
             <div id="windowsBody${this.id}" class="windowsBody">
                 <div>
+                    Enter Your Weight In kg
                     <div id="" class="">
-                        <input type="text" id="wightValue${this.id}" class="">                  
+                        <input type="text" id="wightValue${this.id}" class="bmiInput">                  
                     </div>
-                    <div id="" class="">
-                        <input type="text" id="hightValue${this.id}" class="">
-                        <button id="hightButton${this.id}" class="">Calculate</button>
+                    Enter Your height In m
+                    <div id="" class="bmi">
+                        <input type="text" id="hightValue${this.id}" class="bmiInput">
+                        <button id="hightButton${this.id}" class="bmiButton">Calculate</button>
                     </div>
                     <div id="inputBmi${this.id}" class="">
                     </div>

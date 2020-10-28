@@ -145,7 +145,7 @@ document.getElementById("hangmanIcon").addEventListener("click",  () => {
   bmi.createC();
   DragAndDrop.main (bmi.id)
   let wightt;
-  document.getElementById(`smallIcon${bmi.id}`).src="img/hangman_icon.png"
+  document.getElementById(`smallIcon${bmi.id}`).src="img/bmi.jpg"
   let wightValue = document.getElementById(`wightValue${bmi.id}`)
   let hightt;
   let hight = document.getElementById(`hightButton${bmi.id}`)

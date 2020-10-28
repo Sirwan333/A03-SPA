@@ -34,6 +34,7 @@ export default class Chat{
         </div>
         <div id="windowsBody${this.id}" class="windowsBody">
             <div id ="username${this.id}" class ="username">
+                Enter Your Name
                 <input type="text" name="" id="usernameInput${this.id}" class="usernameInput">
                 <button id="usernameButton${this.id}" class="usernameButton">Start To Chat</button>
             </div>  
