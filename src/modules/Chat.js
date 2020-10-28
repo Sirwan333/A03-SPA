@@ -1,33 +1,32 @@
-export default class Chat{
-   
-    constructor(id) {
-        this.id = id
-        this.url = "ws://vhost3.lnu.se:20080/socket/"
-        this.websocket=null;
-    }
+export default class Chat {
+  constructor (id) {
+    this.id = id
+    this.url = 'ws://vhost3.lnu.se:20080/socket/'
+    this.websocket = null
+  }
 
-    connect(){
-       this.websocket = new WebSocket(this.url);
-       return this.websocket
-    }
+  connect () {
+    this.websocket = new WebSocket(this.url)
+    return this.websocket
+  }
 
-    sendMessage(messageText){
-        this.websocket.send(messageText);
-    }
+  sendMessage (messageText) {
+    this.websocket.send(messageText)
+  }
 
-    close(){
-        this.websocket.close();
-    }
+  close () {
+    this.websocket.close()
+  }
 
-    createC(){
-        let div = document.createElement("div")
-        div.id = `container${this.id}`
-        div.style.top = 0;
-        div.style.left = 0;
-        div.className = "divCon"
-        div.draggable = "true"
-        div.style.position ="absolute"
-        div.innerHTML = `<div id="newWindows${this.id}" class="newWindows">
+  createC () {
+    const div = document.createElement('div')
+    div.id = `container${this.id}`
+    div.style.top = 0
+    div.style.left = 0
+    div.className = 'divCon'
+    div.draggable = 'true'
+    div.style.position = 'absolute'
+    div.innerHTML = `<div id="newWindows${this.id}" class="newWindows">
         <div id="upperBar">
             <img id="smallIcon${this.id}" src="" class="smallIcon" alt="smallIcon">
             <button type="button" id="close${this.id}" class="close">X</button>
@@ -49,6 +48,6 @@ export default class Chat{
         </div>
         <div id="windowsBottom" class="windowsBottom"></div>
       </div>`
-        document.body.appendChild(div)
-    }
+    document.body.appendChild(div)
+  }
 }
