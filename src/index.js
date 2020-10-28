@@ -76,7 +76,7 @@ document.getElementById('chatIcon').addEventListener('click', () => {
   const message1 = {
     type: 'message',
     data: '',
-    username: 'S',
+    username: '',
     key: 'eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd'
   }
   const chat = new Chat(counttt++)
@@ -88,7 +88,7 @@ document.getElementById('chatIcon').addEventListener('click', () => {
   const messageWindow1 = document.getElementById(`messageWindow${chat.id}`)
   const inputArea = document.getElementById(`inputArea${chat.id}`)
   const buttonSend = document.getElementById(`buttonSend${chat.id}`)
-  if (!myStorage.getItem('username') === '') {
+  if (!myStorage.getItem('username') == '') {
     usernameInterface.style.display = 'none'
     messageWindow1.style.display = 'block'
     inputArea.style.display = 'block'
