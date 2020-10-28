@@ -12,7 +12,7 @@ import BMI from './modules/BMI.js';
 
 
 
-
+let myStorage = window.localStorage;
 
 
 
@@ -99,14 +99,43 @@ document.getElementById("memoryIcon").addEventListener("click",  () => {
 
 
 
-
-let counttt1 = 0;
 document.getElementById("chatIcon").addEventListener("click",  () => {
 
-
+  let message1 = {
+    "type": "message",
+    "data": "",
+    "username": "S",
+    "key": "eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd"
+  }
   let chat = new Chat(counttt++)
   let socket =chat.connect()
   chat.createC();
+  let username = document.getElementById(`usernameInput${chat.id}`)
+  let usernameInterface = document.getElementById(`username${chat.id}`)
+  let messageWindow1 = document.getElementById(`messageWindow${chat.id}`)
+  let inputArea = document.getElementById(`inputArea${chat.id}`)
+  let buttonSend = document.getElementById(`buttonSend${chat.id}`)
+  
+  if(!myStorage.getItem(`username`)==""){
+      usernameInterface.style.display = "none";
+      messageWindow1.style.display = "block";
+      inputArea.style.display = "block";
+      buttonSend.style.display = "block";
+  }else{
+    
+    document.getElementById(`usernameButton${chat.id}`).addEventListener("click", ()=>{
+      myStorage.setItem(`username`, username.value);
+      message1.username = username.value
+      usernameInterface.style.display = "none";
+      messageWindow1.style.display = "block";
+      inputArea.style.display = "block";
+      buttonSend.style.display = "block";
+
+  })
+
+  }
+  
+  
   main (chat.id)
   let messageWindow = document.getElementById(`messageWindow${chat.id}`)
   let data = document.getElementById(`inputArea${chat.id}`)
@@ -114,24 +143,19 @@ document.getElementById("chatIcon").addEventListener("click",  () => {
   socket.addEventListener('message', function (event) {
     console.log('Message from server ', event.data);
     
-    let rec = JSON.parse(event.data)
-    if(rec.type == "heartbeat"){
+    let recData = JSON.parse(event.data)
+    if(recData.type == "heartbeat"){
 
     }
     else{
-      messageWindow.innerHTML += ` ${rec.data} <br>`
+      messageWindow.innerHTML += `<div style="background-color:#E8E8E8;"><b> ${recData.username}:</b> </div> ${recData.data} <br>`
     }
     
   });  
   socket.addEventListener('open', function (event) {
     sendButton.addEventListener('click', (event) =>{
       console.log(event.target)
-      let message1 = {
-        "type": "message",
-        "data": "",
-        "username": "Name1",
-        "key": "eDBE76deU7L0H9mEBgxUKVR0VCnq0XBd"
-      }
+      message1.username = myStorage.getItem(`username`)
       message1.data = data.value 
       data.value = "";
       chat.sendMessage(JSON.stringify(message1));

@@ -31,8 +31,12 @@ export default class Chat{
           <button type="button" id="close${this.id}" class="close">X</button>
         </div>
         <div id="windowsBody${this.id}" class="windowsBody">
+            <div id ="username${this.id}" class ="username">
+                <input type="text" name="" id="usernameInput${this.id}" class="usernameInput">
+                <button id="usernameButton${this.id}" class="usernameButton">Start To Chat</button>
+            </div>
+            
             <div id ="messageWindow${this.id}" class ="messageWindow">
-        
             </div>
             
             <div>
